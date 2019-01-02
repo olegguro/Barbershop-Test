@@ -1,21 +1,21 @@
 require 'sinatra'
 
 get '/' do
-   	erb:index
+   	erb :index
 end
 
 post '/' do
-	@user_name =  params [:user_name]
-	@phone = params [:phone]
-	@date_time = params [:date_time]
+	@user_name=params[:user_name]
+	@phone=params[:phone]
+	@date_time=params[:date_time]
 	
-	@title = 'Thank you!'
-	@message = "Dear #{@user_name}, we'll be waiting you at #{date_time}"
+	@title='Thank you!'
+	@message="Dear #{@user_name}, we'll be waiting you at #{@date_time}"
 
 	f= File.open 'user.txt', 'a'
 	f.write "User: #{@user_name}, Phone: #{@phone}, Date and time: #{@date_time}"
 	f.close
 
-	erb:message
+	erb :message
 end
 
